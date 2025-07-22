@@ -5,8 +5,10 @@
   <title>Placement Tracker</title>
 </head>
 <body>
+
   <h1>📊 Placement Dashboard</h1>
-  <a href="/add">➕ Add New Task</a>
+
+  <!-- Table Section -->
   <table border="1" cellpadding="10">
     <tr>
       <th>Date</th>
@@ -21,5 +23,28 @@
     </tr>
     {% endfor %}
   </table>
+
+  <hr>
+
+  <!-- Add Task Form Section -->
+  <h2>➕ Add New Task</h2>
+
+  <form method="POST">
+    <label for="date">Date:</label><br>
+    <input type="date" id="date" name="date" required><br><br>
+
+    <label for="task">Task:</label><br>
+    <input type="text" id="task" name="task" required><br><br>
+
+    <label for="status">Status:</label><br>
+    <select id="status" name="status" required>
+      <option value="⏳ In Progress">⏳ In Progress</option>
+      <option value="✅ Completed">✅ Completed</option>
+      <option value="🔜 Upcoming">🔜 Upcoming</option>
+    </select><br><br>
+
+    <button type="submit">Add Task</button>
+  </form>
+
 </body>
 </html>

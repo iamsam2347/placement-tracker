@@ -3,38 +3,21 @@ import sqlite3
 
 app = Flask(__name__)
 
-# 🔧 Create DB if not exists
-def init_db():
-    with sqlite3.connect("tasks.db") as conn:
-        conn.execute("""
-            CREATE TABLE IF NOT EXISTS tasks (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                date TEXT NOT NULL,
-                task TEXT NOT NULL,
-                status TEXT NOT NULL
-            )
-        """)
-init_db()
-
-# 🏠 Homepage: Dashboard
-@app.route('/')
-def dashboard():
-    with sqlite3.connect("tasks.db") as conn:
-        tasks = conn.execute("SELECT * FROM tasks").fetchall()
-    return render_template("dashboard.html", tasks=tasks)
-
-# ➕ Add Task Route
-@app.route('/add', methods=["GET", "POST"])
-def add_task():
+@app.route("/", methods=["GET", "POST"])
+def home():
     if request.method == "POST":
         date = request.form["date"]
         task = request.form["task"]
         status = request.form["status"]
         with sqlite3.connect("tasks.db") as conn:
             conn.execute("INSERT INTO tasks (date, task, status) VALUES (?, ?, ?)", (date, task, status))
-        return redirect('/')
-    return render_template("add_task.html")
+        return redirect("/")
 
-# 🚀 Run App
+    with sqlite3.connect("tasks.db") as conn:
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM tasks")
+        tasks = cur.fetchall()
+    return render_template("dashboard.html", tasks=tasks)
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=5050)
