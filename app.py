@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 import sqlite3
 import os
 
 app = Flask(__name__)
 
-# Database setup function
+# Initialize DB
 def init_db():
     conn = sqlite3.connect('database.db')
     cur = conn.cursor()
@@ -22,8 +22,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Run DB setup on app start
-init_db()
+init_db()  # Run when app starts
 
 @app.route('/', methods=['GET', 'POST'])
 def home():

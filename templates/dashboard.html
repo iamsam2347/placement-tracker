@@ -5,7 +5,7 @@
   <title>Placement Tracker Point</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       background-color: #f0f4f8;
       color: #333;
       text-align: center;
@@ -17,10 +17,10 @@
     }
 
     table {
-      margin: auto;
-      width: 90%;
+      margin: 30px auto;
+      width: 95%;
       border-collapse: collapse;
-      background-color: #ffffff;
+      background-color: #fff;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
@@ -74,68 +74,68 @@
 </head>
 <body>
 
-  <h1>📊 Progress Dashboard</h1>
+<h1>📊 Progress Dashboard</h1>
 
-  <!-- Table Section -->
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Task</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Difficulty Level</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for t in tasks %}
-      <tr>
-        <td>{{ t[1] }}</td>
-        <td>{{ t[2] }}</td>
-        <td>{{ t[3] }}</td>
-        <td>{{ t[4] }}</td>
-        <td>{{ t[5] }}</td>
-        <td>{{ t[6] }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+<!-- Task Table -->
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Task</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Difficulty Level</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in tasks %}
+    <tr>
+      <td>{{ t[1] }}</td>
+      <td>{{ t[2] }}</td>
+      <td>{{ t[3] }}</td>
+      <td>{{ t[4] }}</td>
+      <td>{{ t[5] }}</td>
+      <td>{{ t[6] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-  <!-- Add Task Form Section -->
-  <h2>➕ Add New Task</h2>
-  <h3 style="color: #ad006d;">📊 Welcome to Your Placement Tracker</h3>
-  <p style="font-size: 1.1em;">Track your tasks and shine in your career journey!</p>
+<!-- Add Task Section -->
+<h2>➕ Add New Task</h2>
+<h3 style="color: #ad006d;">📊 Welcome to Your Placement Tracker</h3>
+<p style="font-size: 1.1em;">Track your tasks and shine in your career journey!</p>
 
-  <form method="POST">
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date" required>
+<form method="POST">
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date" required>
 
-    <label for="start_date">Start Date:</label>
-    <input type="date" id="start_date" name="start_date" required>
+  <label for="start_date">Start Date:</label>
+  <input type="date" id="start_date" name="start_date" required>
 
-    <label for="end_date">End Date:</label>
-    <input type="date" id="end_date" name="end_date" required>
+  <label for="end_date">End Date:</label>
+  <input type="date" id="end_date" name="end_date" required>
 
-    <label for="task">Task:</label>
-    <input type="text" id="task" name="task" required>
+  <label for="task">Task:</label>
+  <input type="text" id="task" name="task" required>
 
-    <label for="status">Status:</label>
-    <select id="status" name="status" required>
-      <option value="⏳ In Progress">⏳ In Progress</option>
-      <option value="✅ Completed">✅ Completed</option>
-      <option value="🔜 Upcoming">🔜 Upcoming</option>
-    </select>
+  <label for="status">Status:</label>
+  <select id="status" name="status" required>
+    <option value="⏳ In Progress">⏳ In Progress</option>
+    <option value="✅ Completed">✅ Completed</option>
+    <option value="🔜 Upcoming">🔜 Upcoming</option>
+  </select>
 
-    <label for="difficulty_level">Difficulty Level:</label>
-    <select id="difficulty_level" name="difficulty_level" required>
-      <option value="Easy">Easy</option>
-      <option value="Medium">Medium</option>
-      <option value="Difficult">Difficult</option>
-    </select>
+  <label for="difficulty_level">Difficulty Level:</label>
+  <select id="difficulty_level" name="difficulty_level" required>
+    <option value="Easy">Easy</option>
+    <option value="Medium">Medium</option>
+    <option value="Difficult">Difficult</option>
+  </select>
 
-    <button type="submit">Add Task</button>
-  </form>
+  <button type="submit">Add Task</button>
+</form>
 
 </body>
 </html>
