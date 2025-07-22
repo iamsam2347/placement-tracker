@@ -2,24 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Placement Tracker</title>
+  <title>Placement Tracker Point</title>
 </head>
 <body>
 
-  <h1>📊 Placement Dashboard</h1>
+  <h1>📊 Progress Dashboard</h1>
 
   <!-- Table Section -->
-  <table border="1" cellpadding="10">
+  <table border="7" cellpadding="15">
     <tr>
       <th>Date</th>
       <th>Task</th>
+      <th>Start date</th>
+      <th>End Date</th>
+      <th>Difficulty Level</th>
       <th>Status</th>
+
     </tr>
     {% for t in tasks %}
     <tr>
       <td>{{ t[1] }}</td>
       <td>{{ t[2] }}</td>
       <td>{{ t[3] }}</td>
+      <td>{{ t[4] }}</td>
+      <td>{{ t[5] }}</td>
+      <td>{{ t[6] }}</td>
     </tr>
     {% endfor %}
   </table>
@@ -34,6 +41,10 @@
   <form method="POST">
     <label for="date">Date:</label><br>
     <input type="date" id="date" name="date" required><br><br>
+    <label for="start date">Start Date:</label><br>
+    <input type=" start date" id=" start date" name="start date" required><br><br>
+    <label for="End date">End Date:</label><br>
+    <input type=" end date" id=" end date" name="end date" required><br><br>
 
     <label for="task">Task:</label><br>
     <input type="text" id="task" name="task" required><br><br>
@@ -43,7 +54,14 @@
       <option value="⏳ In Progress">⏳ In Progress</option>
       <option value="✅ Completed">✅ Completed</option>
       <option value="🔜 Upcoming">🔜 Upcoming</option>
+      
     </select><br><br>
+    <label for="status">Difficulty level:</label><br>
+    <select id="difficulty level" name="difficulty level" required>
+      <option value="Easy">Easy</option>
+        <option value="medium">Medium</option>
+          <option value="difficult">Difficult</option>
+          <br>
 
     <button type="submit">Add Task</button>
   </form>
