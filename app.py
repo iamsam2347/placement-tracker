@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
+import os
 
 app = Flask(__name__)
 
+# Home Route → Show dashboard + handle add task form
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
@@ -19,6 +21,7 @@ def home():
         tasks = cur.fetchall()
     return render_template("dashboard.html", tasks=tasks)
 
+# ✅ Run Flask with PORT logic (important for Render)
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0', port=10000)
-
+    port = int(os.environ.get("PORT", 5050))
+    app.run(debug=False, host="0.0.0.0", port=port)
